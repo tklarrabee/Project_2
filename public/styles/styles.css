@@ -1,3 +1,33 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+header {
+  background-color: black;
+}
+
+body {
+  background-color: #212121;
+}
+
+.tabs .indicator{
+  background-color: #1a237e;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active{
+  background: transparent;
+}
+
+.materialize-textarea {
+  color: white;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #2979ff;
+  box-shadow: 0 1px 0 0 #2979ff;
+}
+
+textarea.materialize-textarea:focus:not([readonly])+label {
+  color: #2979ff;
+}
+

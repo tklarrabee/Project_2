@@ -1,33 +1,63 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
+<section class="section container">
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+          <li class="tab col s4">
+            <a href="#tasks" class="grey darken-4 blue-text text-accent-3">Tasks</a>
           </li>
-          {{/each}}
+          <li class="tab col s4">
+            <a href="#events" class="grey darken-4 blue-text text-accent-3">Events</a>
+          </li>
+          <li class="tab col s4">
+            <a href="#notes" class="grey darken-4 blue-text text-accent-3">Notes</a>
+          </li>
         </ul>
-      </div>
+        <div class="col s12 l8 offset-l2">
+          <div class="card" id="tasks">
+            <div class="card-content grey darken-3 white-text">
+              <span class="card-title">Tasks</span>
+              <p>Lists of tasks to be dynamically generated</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l8 offset-l2">
+          <div class="card" id="events">
+            <div class="card-content grey darken-3 white-text">
+              <span class="card-title">Events</span>
+              <p>Lists of events to be dynamically generated</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l8 offset-l2">
+          <div class="card" id="notes">
+            <div class="card-content grey darken-3 white-text">
+              <span class="card-title">Notes</span>
+              <p>Lists of notes to be dynamically generated</p>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
-</div>
+</section>
+<section class="section container">
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <form>
+        <div class="input-field">
+          <i class="material-icons prefix">logs</i>
+              <textarea id="message" class="materialize-textarea" autofocus></textarea>
+              <label for="message">Your Logs</label>
+        </div>
+      </form>
+      <a class="waves-effect waves-light btn blue accent-3 right" id="add">Add to Logs</a>
+    </div>
+  </div>
+</section>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/js/index.js"></script>
+

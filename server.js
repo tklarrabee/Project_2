@@ -8,7 +8,7 @@ var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-// EJS
+// EJS.
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 

@@ -3,7 +3,7 @@ const task = '•'
 const event = '&#9702'
 const note = '&#8259'
 
-document.write(task, event, note);
+// document.write(task, event, note)
 
 function Element (body, type, date, urgent, user) {
   this.body = body
@@ -73,22 +73,40 @@ $('#area').keydown(function (e) {
   // Now you can test the deleted character(s) here
 })
 
+function getVal () {
+  let editorState = $('#area').val()
+  return editorState
+}
+
+function addSymbol(pos, sym, text) {
+
+    let end = text.length
+    let halfOne = text.substring(0, pos[0])
+    let halfTwo = text.substring(pos[1], end)
+    let newState = halfOne + ' ' + sym + ' ' + halfTwo
+    return newState
+}
+
 $('#area').keydown(function (e) {
+  let text = getVal()
+  let position = $(this).getCursorPosition()
   // console.log('event ' + e.ctrlKey)
   if (e.ctrlKey) {
     $('#area').keydown(function (e) {
       if (e.which === 190) {
         // let val = $(this).val()
-        let end = str.length
-        let val = str
-        let position = $(this).getCursorPosition()
-        let halfOne = str.substring(0, position[0])
-        let halfTwo = str.substring(position[1], end)
-        val = halfOne + ' ' + task + ' ' + halfTwo
-        $(this).val(val)
-        str = $(this).val()
+        // let end = text.length
+        
+        // let halfOne = text.substring(0, position[0])
+        // let halfTwo = str.substring(position[1], end)
+        // val = halfOne + ' ' + task + ' ' + halfTwo
         // $(this).val(val)
-        console.log(halfOne, halfTwo)
+        // $(this).val(val)
+
+        $(this).val(addSymbol(position, task, text))
+        position = $(this).getCursorPosition()
+        text = getVal()
+        // console.log(halfOne, halfTwo)
       }
     })
   }

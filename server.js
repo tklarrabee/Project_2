@@ -33,7 +33,8 @@ app.use('/users', require('./routes/users'));
 
 // Routes
 require('./routes/apiRoutes')(app)
-require('./routes/htmlRoutes')(app)
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
 
 var syncOptions = { force: false }
 

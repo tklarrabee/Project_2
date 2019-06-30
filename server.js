@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-require('dotenv').config()
-var express = require('express')
-var exphbs = require('express-handlebars')
-=======
 require("dotenv").config();
 var express = require("express");
-var exphbs = require("express-handlebars");
+// var exphbs = require("express-handlebars");
 var expressLayouts = require('express-ejs-layouts');
->>>>>>> 4f03b878f34d48d1dd1da4acab1f0224962218b4
 
 var db = require('./models')
 
@@ -23,16 +17,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(express.static('public'))
 
+// Routes
+require("./routes/apiRoutes")(app);
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
+
 // Handlebars
-<<<<<<< HEAD
-app.engine(
-  'handlebars',
-  exphbs({
-    defaultLayout: 'main'
-  })
-)
-app.set('view engine', 'handlebars')
-=======
 // app.engine(
 //   "handlebars",
 //   exphbs({
@@ -40,7 +30,6 @@ app.set('view engine', 'handlebars')
 //   })
 // );
 // app.set("view engine", "handlebars");
->>>>>>> 4f03b878f34d48d1dd1da4acab1f0224962218b4
 
 // Routes
 require('./routes/apiRoutes')(app)

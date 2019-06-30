@@ -111,7 +111,17 @@ input[type=password]:not(.browser-default):focus:not([readonly]) {
   margin-right: auto;
 }
 
+.logo-row {
+  height: 250px;
+}
 
+.account {
+  font-size: 18px;
+}
+
+.register {
+  margin: 5px;
+}
 
 /*input[type=password]:not(.browser-default) {
   border-bottom: none;

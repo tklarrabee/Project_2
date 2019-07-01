@@ -112,12 +112,14 @@ $('#log').on('click', function (e) {
         entries.push(entry)
       }
     } else if (rawLog[i] === event) {
+      bodyIndex = i + 1
       body = rawLog[bodyIndex].trim()
       if (body !== '' && body !== task && body !== note && body !== event) {
         let entry = new Element(body, 'event')
         entries.push(entry)
       }
     } else if (rawLog[i] === note) {
+      bodyIndex = i + 1
       body = rawLog[bodyIndex].trim()
       if (body !== '' && body !== task && body !== note && body !== event) {
         let entry = new Element(body, 'note')

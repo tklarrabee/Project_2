@@ -5,12 +5,12 @@ const note = '▷'
 
 // document.write(task, event, note)
 
-function Element (body, type, date, urgent, user) {
+function Element (body, type) {
   this.body = body
   this.type = type
-  this.date = date
-  this.urgent = urgent
-  this.user = user
+  // this.date = date
+  // this.urgent = urgent
+  // this.user = user
 }
 // on submit do this
 var str = $('#area').val()
@@ -99,31 +99,31 @@ $('#area').keydown(function (e) {
 
 $('#log').on('click', function (e) {
   let log = getVal()
+  let entries = []
   // get information
-  let t = log.split(/([○▷●])/g)
-  // for (var i = 0; i < t.length; i++) {
-  //   var arr = t[i].split('\t')
-  //   document.write("'<row dc= '" + arr[0] + "' al='" + arr[1] + "' msg='" + arr[2] + "' />'")
-  // }
-  console.log(t)
+  let rawLog = log.split(/([○▷●])/g)
+  console.log(rawLog)
+  for (i = 0; i < rawLog.length; i++) {
+    if (rawLog[i] === task) {
+      bodyIndex = i + 1
+      body = rawLog[bodyIndex].trim()
+      if (body !== '' && body !== task && body !== note && body !== event) {
+        let entry = new Element(body, 'task')
+        entries.push(entry)
+      }
+    } else if (rawLog[i] === event) {
+      body = rawLog[bodyIndex].trim()
+      if (body !== '' && body !== task && body !== note && body !== event) {
+        let entry = new Element(body, 'event')
+        entries.push(entry)
+      }
+    } else if (rawLog[i] === note) {
+      body = rawLog[bodyIndex].trim()
+      if (body !== '' && body !== task && body !== note && body !== event) {
+        let entry = new Element(body, 'note')
+        entries.push(entry)
+      }
+    }
+    console.log(entries)
+  }
 })
-
-// if (e.which === 190) {
-//   $(this).val(addSymbol(position, task, text))
-//   position = $(this).getCursorPosition()
-//   text = getVal()
-// }
-// $('#area').keydown(function (e) {
-//   switch (e.which) {
-//     case 190:
-//       $(this).val(addSymbol(position, task, text))
-//       break
-//     case 188:
-//       $(this).val(addSymbol(position, event, text))
-//       break
-//     case 191:
-//       $(this).val(addSymbol(position, note, text))
-//       break
-//   }
-// })
-// Constructor for new tasks, events, and notes.

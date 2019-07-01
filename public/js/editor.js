@@ -12,17 +12,8 @@ function Element (body, type) {
   // this.urgent = urgent
   // this.user = user
 }
-// on submit do this
-var str = $('#area').val()
-// get information
-var t = str.split('\n')
-for (var i = 0; i < t.length; i++) {
-  var arr = t[i].split('\t')
-  document.write("'<row dc= '" + arr[0] + "' al='" + arr[1] + "' msg='" + arr[2] + "' />'")
-}
 
 // Used to determine the cursor position within the editor area.
-
 $.fn.getCursorPosition = function () {
   var el = $(this).get(0)
   var pos = 0
@@ -126,6 +117,6 @@ $('#log').on('click', function (e) {
         entries.push(entry)
       }
     }
-    console.log(entries)
   }
+  console.log(entries)
 })

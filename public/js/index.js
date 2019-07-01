@@ -14,8 +14,8 @@ for (var i = 0; i < t.length; i++) {
 
 $(function () {
   $('#button').on('click', function () {
-    var text = $('#text');
-    text.val(text.val() + ' after clicking');
+    var text = $('#text')
+    text.val(text.val() + ' after clicking')
   })
 })
 
@@ -160,10 +160,10 @@ var handleDeleteBtnClick = function () {
 }
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$submitBtn.on('click', handleFormSubmit)
+$exampleList.on('click', '.delete', handleDeleteBtnClick)
 
 // materialize functions
-$(document).ready(function() {
-  $(".tabs").tabs();
-});
+$(document).ready(function () {
+  $('.tabs').tabs()
+})

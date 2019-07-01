@@ -6,6 +6,10 @@ body {
   background-color: #212121;
 }
 
+.section {
+  margin-top: 100px;
+}
+
 .tabs .indicator{
   background-color: #1a237e;
 }
@@ -24,7 +28,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 textarea.materialize-textarea:focus:not([readonly])+label {
-  /* color: #2979ff; */
   display: none;
 }
 
@@ -48,210 +51,101 @@ textarea.materialize-textarea+label {
   margin-right: 25px;
 }
 
-/************************************** Login Page Style****************************************/
-
-@import url('https://rsms.me/inter/inter-ui.css');
-::selection {
-  background: #2D2F36;
-}
-::-webkit-selection {
-  background: #2D2F36;
-}
-::-moz-selection {
-  background: #2D2F36;
-}
-header {
-    background-color: black;
-    width: 100%;
-}
-body {
-  background: #212121;
-  font-family: 'Inter UI', sans-serif;
-  margin: 0;
-}
-.page {
-  background: #212121;
-  display: flex;
-  flex-direction: column;
-  height: calc(100% - 80px);
-  position: absolute;
-  place-content: center;
-  width: 100%;
-}
-@media (max-width: 767px) {
-  .page {
-    height: auto;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-  }
-}
-.container2 {
-  display: flex;
-  height: 320px;
-  margin: 0 auto;
-  width: 640px;
-}
-@media (max-width: 767px) {
-  .container2 {
-    flex-direction: column;
-    height: 630px;
-    width: 320px;
-  }
-}
-.left-login {
-  background: #9e9e9e;
-  height: calc(100% - 40px);
-  top: 20px;
-  position: relative;
-  width: 50%;
-}
-@media (max-width: 767px) {
-  .left-login {
-    height: 100%;
-    left: 20px;
-    width: calc(100% - 40px);
-    max-height: 270px;
-  }
-}
-.login {
-  color: #2196f3;
-  text-shadow: 1px 2px 2px #607d8b;
-  font-size: 50px;
-  font-weight: 900;
-  margin: 50px 40px 20px;
-}
-.eula {
-  color: white;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 20px 40px;
-}
-.right-login {
-  background: #474A59;
-  box-shadow: 0px 0px 40px 16px rgba(0,0,0,0.22);
-  color: #F1F1F2;
-  position: relative;
-  width: 50%;
-}
-@media (max-width: 767px) {
-  .right-login {
-    flex-shrink: 0;
-    height: 100%;
-    width: 100%;
-    max-height: 350px;
-  }
-}
-svg {
-  position: absolute;
-  width: 320px;
-}
-path {
-  fill: none;
-  stroke: url(#linearGradient);;
-  stroke-width: 4;
-  stroke-dasharray: 240 1386;
-}
-.form2 {
-  margin: 40px;
-  position: absolute;
-}
-label {
-  color:  #c2c2c5;
-  display: block;
-  font-size: 14px;
-  height: 16px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-label::after {
-  color: rgb(194, 194, 197);
-}
-input {
-  background: transparent;
-  border: 0;
-  color: #f2f2f2;
-  font-size: 20px;
-  height: 30px;
-  line-height: 30px;
-  outline: none !important;
-  width: 100%;
-}
-input[type=email]:not(.browser-default) {
-  border-bottom: none;
-  box-shadow: none;
-}
-input[type=email]:not(.browser-default):focus:not([readonly]) {
-  border-bottom: none;
-  box-shadow: none;
-}
-input[type=email]:not(.browser-default):focus:not([readonly]) + label {
-  border-bottom: none;
-  box-shadow: none;
-  color: #f2f2f2;
-}
-input[type=password]:not(.browser-default) {
-  border-bottom: none;
-  box-shadow: none;
-}
-input[type=password]:not(.browser-default):focus:not([readonly]) {
-  border-bottom: none;
-  box-shadow: none;
-}
-input[type=password]:not(.browser-default):focus:not([readonly]) + label {
-  border-bottom: none;
-  box-shadow: none;
-  color: #f2f2f2;
-}
-input::-moz-focus-inner { 
-  border: 0; 
-}
-#submit {
-  color: #707075;
-  margin-top: 18px;
-  transition: color 300ms;
-}
-#submit:focus {
-  color: #f2f2f2;
-}
-#submit:active {
-  color: #d0d0d2;
-}
-/********************************** logo animation **************************************/
-
 #logo {
   max-width: 250px;
 }
 
-#title {
-  display: inline-block;
+/************************************** Login Page Style***************************************/
+.login {
+  text-shadow: 1px 2px 2px #607d8b;
+  font-size: 45px;
+  font-weight: 900;
+  padding: 20px 30px 10px;
 }
 
-.tracking-in-expand {
-	-webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+.eula {
+  color: white;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 30px 20px;
 }
 
-@-webkit-keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
+.right-login {
+  box-shadow: 0px 0px 40px 16px rgba(0,0,0,0.22);
+  color: #F1F1F2;
 }
-@keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
+
+.left-login {
+  box-shadow: 0px 0px 40px 16px rgba(0,0,0,0.22);
+  margin-top: 30px;
+}
+
+.form2 {
+  padding: 40px;
+}
+
+input[type=email]:not(.browser-default):focus:not([readonly]) + label {
+  color: #448aff;
+}
+
+input[type=email]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #448aff;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+input[type=password]:not(.browser-default):focus:not([readonly]) + label {
+  color: #448aff;
+}
+
+input[type=password]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #448aff;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+input[type=password2]:not(.browser-default):focus:not([readonly]) + label {
+  color: #448aff;
+}
+
+input[type=password2]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #448aff;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+input[type=name]:not(.browser-default):focus:not([readonly]) + label {
+  color: #448aff;
+}
+
+input[type=name]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #448aff;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+/*************************Welcome Page Style*****************************/
+
+.logo {
+  max-width: 250px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo-row {
+  height: 250px;
+}
+
+.account {
+  font-size: 18px;
+}
+
+.register {
+  margin: 5px;
+}
+
+.register-form {
+  width: 70%;
+  margin: 50px auto;
+}
+
+.bottom-text {
+  margin-top: 40px;
 }

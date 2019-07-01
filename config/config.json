@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Dai916Tran!",
+    "password": "root",
     "database": "rapid_logger_db",
     "host": "localhost",
     "dialect": "mysql"

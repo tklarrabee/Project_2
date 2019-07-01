@@ -12,7 +12,9 @@
   },
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
@@ -23,7 +25,8 @@
     "mysql2": "^1.6.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^5.8.6"
+    "sequelize": "^5.8.6",
+    "session": "^0.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

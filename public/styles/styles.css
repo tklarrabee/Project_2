@@ -28,7 +28,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 textarea.materialize-textarea:focus:not([readonly])+label {
-  /* color: #2979ff; */
   display: none;
 }
 
@@ -93,11 +92,30 @@ input[type=email]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #448aff;
   box-shadow: 0 1px 0 0 #000;
 }
+
 input[type=password]:not(.browser-default):focus:not([readonly]) + label {
   color: #448aff;
 }
 
 input[type=password]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #448aff;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+input[type=password2]:not(.browser-default):focus:not([readonly]) + label {
+  color: #448aff;
+}
+
+input[type=password2]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #448aff;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+input[type=name]:not(.browser-default):focus:not([readonly]) + label {
+  color: #448aff;
+}
+
+input[type=name]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #448aff;
   box-shadow: 0 1px 0 0 #000;
 }
@@ -111,32 +129,23 @@ input[type=password]:not(.browser-default):focus:not([readonly]) {
   margin-right: auto;
 }
 
+.logo-row {
+  height: 250px;
+}
 
+.account {
+  font-size: 18px;
+}
 
-/*input[type=password]:not(.browser-default) {
-  border-bottom: none;
-  box-shadow: none;
+.register {
+  margin: 5px;
 }
-input[type=password]:not(.browser-default):focus:not([readonly]) {
-  border-bottom: none;
-  box-shadow: none;
+
+.register-form {
+  width: 70%;
+  margin: 50px auto;
 }
-input[type=password]:not(.browser-default):focus:not([readonly]) + label {
-  border-bottom: none;
-  box-shadow: none;
-  color: #f2f2f2;
-} 
-input::-moz-focus-inner { 
-  border: 0; 
+
+.bottom-text {
+  margin-top: 40px;
 }
-#submit {
-  color: #707075;
-  margin-top: 18px;
-  transition: color 300ms;
-}
-#submit:focus {
-  color: #f2f2f2;
-}
-#submit:active {
-  color: #d0d0d2;
-} */

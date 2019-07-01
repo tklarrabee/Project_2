@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-const task = '•'
-const event = '&#9702'
-const note = '&#8259'
+const task = '●'
+const event = '○'
+const note = '▷'
 
 // document.write(task, event, note)
 
@@ -21,12 +21,7 @@ for (var i = 0; i < t.length; i++) {
   document.write("'<row dc= '" + arr[0] + "' al='" + arr[1] + "' msg='" + arr[2] + "' />'")
 }
 
-$(function () {
-  $('#button').on('click', function () {
-    var text = $('#text')
-    text.val(text.val() + ' after clicking')
-  })
-})
+// Used to determine the cursor position within the editor area.
 
 $.fn.getCursorPosition = function () {
   var el = $(this).get(0)
@@ -78,37 +73,44 @@ function getVal () {
   return editorState
 }
 
-function addSymbol(pos, sym, text) {
-
-    let end = text.length
-    let halfOne = text.substring(0, pos[0])
-    let halfTwo = text.substring(pos[1], end)
-    let newState = halfOne + ' ' + sym + ' ' + halfTwo
-    return newState
+function addSymbol (pos, sym, text) {
+  let end = text.length
+  let halfOne = text.substring(0, pos[0])
+  let halfTwo = text.substring(pos[1], end)
+  let newState = halfOne + ' ' + sym + ' ' + halfTwo
+  return newState
 }
 
 $('#area').keydown(function (e) {
-  let text = getVal()
-  let position = $(this).getCursorPosition()
+
   // console.log('event ' + e.ctrlKey)
   if (e.ctrlKey) {
+    let text = getVal()
+    let position = $(this).getCursorPosition()
     $('#area').keydown(function (e) {
-      if (e.which === 190) {
-        // let val = $(this).val()
-        // let end = text.length
-        
-        // let halfOne = text.substring(0, position[0])
-        // let halfTwo = str.substring(position[1], end)
-        // val = halfOne + ' ' + task + ' ' + halfTwo
-        // $(this).val(val)
-        // $(this).val(val)
-
-        $(this).val(addSymbol(position, task, text))
-        position = $(this).getCursorPosition()
-        text = getVal()
-        // console.log(halfOne, halfTwo)
+      switch (e.which) {
+        case 190:
+          $(this).val(addSymbol(position, task, text))
+          break
+        case 188:
+          $(this).val(addSymbol(position, event, text))
+          break
+        case 191:
+          $(this).val(addSymbol(position, note, text))
+          break
       }
     })
   }
 })
+
+$('#log').on('click', function (e) {
+  console.log($('#area').val())
+})
+
+// if (e.which === 190) {
+//   $(this).val(addSymbol(position, task, text))
+//   position = $(this).getCursorPosition()
+//   text = getVal()
+// }
+
 // Constructor for new tasks, events, and notes.

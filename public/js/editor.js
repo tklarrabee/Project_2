@@ -5,6 +5,7 @@ const note = '▷'
 
 // document.write(task, event, note)
 
+// Constructor that will have different argument.
 function Element (body, type) {
   this.body = body
   this.type = type
@@ -59,11 +60,13 @@ $('#area').keyup(function (e) {
   // Now you can test the deleted character(s) here
 })
 
+// Get current text editor value
 function getVal () {
   let editorState = $('#area').val()
   return editorState
 }
 
+// add Symbol, split editor value at cursor position and insert the symbol provided as an argument
 function addSymbol (pos, sym, text) {
   let end = text.length
   let halfOne = text.substring(0, pos[0])
@@ -72,6 +75,7 @@ function addSymbol (pos, sym, text) {
   return newState
 }
 
+// Hotkey event listener
 $('#area').keydown(function (e) {
   if (e.ctrlKey && e.which === 190) {
     let text = getVal()
@@ -88,6 +92,7 @@ $('#area').keydown(function (e) {
   }
 })
 
+// Submit event listener.
 $('#log').on('click', function (e) {
   let log = getVal()
   let entries = []

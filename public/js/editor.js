@@ -43,7 +43,7 @@ $.fn.getCursorPosition = function () {
 }
 // Detect which key was deleted
 // make it so that it will only log on a delete
-$('#area').keydown(function (e) {
+$('#area').keyup(function (e) {
   var position = $(this).getCursorPosition()
   var deleted = ''
   var val = $(this).val()
@@ -82,29 +82,30 @@ function addSymbol (pos, sym, text) {
 }
 
 $('#area').keydown(function (e) {
-
-  // console.log('event ' + e.ctrlKey)
-  if (e.ctrlKey) {
+  if (e.ctrlKey && e.which === 190) {
     let text = getVal()
     let position = $(this).getCursorPosition()
-    $('#area').keydown(function (e) {
-      switch (e.which) {
-        case 190:
-          $(this).val(addSymbol(position, task, text))
-          break
-        case 188:
-          $(this).val(addSymbol(position, event, text))
-          break
-        case 191:
-          $(this).val(addSymbol(position, note, text))
-          break
-      }
-    })
+    $(this).val(addSymbol(position, task, text))
+  } else if (e.ctrlKey && e.which === 188) {
+    let text = getVal()
+    let position = $(this).getCursorPosition()
+    $(this).val(addSymbol(position, event, text))
+  } else if (e.ctrlKey && e.which === 191) {
+    let text = getVal()
+    let position = $(this).getCursorPosition()
+    $(this).val(addSymbol(position, note, text))
   }
 })
 
 $('#log').on('click', function (e) {
-  console.log($('#area').val())
+  let log = getVal()
+  // get information
+  let t = log.split(/([○▷●])/g)
+  // for (var i = 0; i < t.length; i++) {
+  //   var arr = t[i].split('\t')
+  //   document.write("'<row dc= '" + arr[0] + "' al='" + arr[1] + "' msg='" + arr[2] + "' />'")
+  // }
+  console.log(t)
 })
 
 // if (e.which === 190) {
@@ -112,5 +113,17 @@ $('#log').on('click', function (e) {
 //   position = $(this).getCursorPosition()
 //   text = getVal()
 // }
-
+// $('#area').keydown(function (e) {
+//   switch (e.which) {
+//     case 190:
+//       $(this).val(addSymbol(position, task, text))
+//       break
+//     case 188:
+//       $(this).val(addSymbol(position, event, text))
+//       break
+//     case 191:
+//       $(this).val(addSymbol(position, note, text))
+//       break
+//   }
+// })
 // Constructor for new tasks, events, and notes.

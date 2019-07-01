@@ -61,7 +61,7 @@ $('#area').keydown(function (e) {
   // Now you can test the deleted character(s) here
 })
 
-function Element(body, type, date, urgent, user) {
+function Element (body, type, date, urgent, user) {
   this.body = body
   this.type = type
   this.date = date
@@ -164,6 +164,3 @@ $submitBtn.on('click', handleFormSubmit)
 $exampleList.on('click', '.delete', handleDeleteBtnClick)
 
 // materialize functions
-$(document).ready(function () {
-  $('.tabs').tabs()
-})

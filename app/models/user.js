@@ -28,7 +28,12 @@ module.exports = function(sequelize, Sequelize) {
         password: {
             type: Sequelize.STRING,
             allowNull: false
-        }, 
+        },
+        
+        // password2: {
+        //     type: Sequelize.STRING,
+        //     allowNull: false
+        // }
  
     });
  

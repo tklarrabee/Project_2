@@ -10,7 +10,7 @@
       <div class="register-form">
         <form id="signup" name="signup" method="post" action="/register">
         
-        <!-- type="name" casuse white text box -->
+        <!-- type="name" caused white text box -->
          <div class="input-field">
           <label for="firstname">First name</label>
           <input type="text" id="name" name="firstname"/>
@@ -19,12 +19,12 @@
         <!-- need id="lastname" and type="lastname" and for css for those id and type -->
         <div class="input-field">
           <label for="lastname">Last name</label>
-          <input name="lastname" type="text"/>
+          <input type="text" name="lastname"/>
         </div> 
 
         <div class="input-field">
-          <input type="email" id="email" class="text" name="email"/>
           <label for="email">Email Address</label>
+          <input type="email" id="email" class="text" name="email"/>
         </div>
 
         <div class="input-field">
@@ -32,13 +32,8 @@
           <input type="password" id="password" name="password"/>
         </div>
 
-        {{!-- <div class="input-field">
-          <label for="password2">Confirm Password</label>
-          <input type="password" id="password2"   />
-        </div> --}}
-
         <div class="bottom-text">
-           <input class="btn right waves-effect waves-light btn blue accent-3" type="submit" value="Register" />
+          <input class="btn right waves-effect waves-light btn blue accent-3" type="submit" value="Register" />
           <p class="white-text">Have An Account? <a href="/login">Login</a></p>
       </div>
 

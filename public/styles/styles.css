@@ -7,7 +7,7 @@ body {
 }
 
 .section {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .tabs .indicator{
@@ -84,7 +84,27 @@ textarea.materialize-textarea+label {
   padding: 40px;
 }
 
-input[type=email]:not(.browser-default):focus:not([readonly]) + label {
+input[type=text] {
+  color: white;
+}
+
+input[type=email] {
+  color: white;
+}
+
+input[type=password] {
+  color: white;
+}
+
+.input-field>label:not(.label-icon).active {
+  color: #448aff;
+}
+
+input[type=email]:not(.browser-default):focus:not([readonly])+label {
+  color: #448aff;
+}
+
+input[type=password]:not(.browser-default):focus:not([readonly])+label {
   color: #448aff;
 }
 
@@ -93,29 +113,12 @@ input[type=email]:not(.browser-default):focus:not([readonly]) {
   box-shadow: 0 1px 0 0 #000;
 }
 
-input[type=password]:not(.browser-default):focus:not([readonly]) + label {
-  color: #448aff;
-}
-
 input[type=password]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #448aff;
   box-shadow: 0 1px 0 0 #000;
 }
 
-input[type=password2]:not(.browser-default):focus:not([readonly]) + label {
-  color: #448aff;
-}
-
-input[type=password2]:not(.browser-default):focus:not([readonly]) {
-  border-bottom: 1px solid #448aff;
-  box-shadow: 0 1px 0 0 #000;
-}
-
-input[type=name]:not(.browser-default):focus:not([readonly]) + label {
-  color: #448aff;
-}
-
-input[type=name]:not(.browser-default):focus:not([readonly]) {
+input[type=text]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #448aff;
   box-shadow: 0 1px 0 0 #000;
 }

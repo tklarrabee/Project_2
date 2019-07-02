@@ -5,24 +5,16 @@ const note = '▷'
 
 // document.write(task, event, note)
 
-function Element (body, type, date, urgent, user) {
+// Constructor that will have different argument.
+function Element (body, type) {
   this.body = body
   this.type = type
-  this.date = date
-  this.urgent = urgent
-  this.user = user
-}
-// on submit do this
-var str = $('#area').val()
-// get information
-var t = str.split('\n')
-for (var i = 0; i < t.length; i++) {
-  var arr = t[i].split('\t')
-  document.write("'<row dc= '" + arr[0] + "' al='" + arr[1] + "' msg='" + arr[2] + "' />'")
+  // this.date = date
+  // this.urgent = urgent
+  // this.user = user
 }
 
 // Used to determine the cursor position within the editor area.
-
 $.fn.getCursorPosition = function () {
   var el = $(this).get(0)
   var pos = 0
@@ -68,11 +60,13 @@ $('#area').keyup(function (e) {
   // Now you can test the deleted character(s) here
 })
 
+// Get current text editor value
 function getVal () {
   let editorState = $('#area').val()
   return editorState
 }
 
+// add Symbol, split editor value at cursor position and insert the symbol provided as an argument
 function addSymbol (pos, sym, text) {
   let end = text.length
   let halfOne = text.substring(0, pos[0])
@@ -81,6 +75,7 @@ function addSymbol (pos, sym, text) {
   return newState
 }
 
+// Hotkey event listener
 $('#area').keydown(function (e) {
   if (e.ctrlKey && e.which === 190) {
     let text = getVal()
@@ -97,33 +92,36 @@ $('#area').keydown(function (e) {
   }
 })
 
+// Submit event listener.
 $('#log').on('click', function (e) {
   let log = getVal()
+  let entries = []
   // get information
-  let t = log.split(/([○▷●])/g)
-  // for (var i = 0; i < t.length; i++) {
-  //   var arr = t[i].split('\t')
-  //   document.write("'<row dc= '" + arr[0] + "' al='" + arr[1] + "' msg='" + arr[2] + "' />'")
-  // }
-  console.log(t)
+  let rawLog = log.split(/([○▷●])/g)
+  console.log(rawLog)
+  for (i = 0; i < rawLog.length; i++) {
+    if (rawLog[i] === task) {
+      bodyIndex = i + 1
+      body = rawLog[bodyIndex].trim()
+      if (body !== '' && body !== task && body !== note && body !== event) {
+        let entry = new Element(body, 'task')
+        entries.push(entry)
+      }
+    } else if (rawLog[i] === event) {
+      bodyIndex = i + 1
+      body = rawLog[bodyIndex].trim()
+      if (body !== '' && body !== task && body !== note && body !== event) {
+        let entry = new Element(body, 'event')
+        entries.push(entry)
+      }
+    } else if (rawLog[i] === note) {
+      bodyIndex = i + 1
+      body = rawLog[bodyIndex].trim()
+      if (body !== '' && body !== task && body !== note && body !== event) {
+        let entry = new Element(body, 'note')
+        entries.push(entry)
+      }
+    }
+  }
+  console.log(entries)
 })
-
-// if (e.which === 190) {
-//   $(this).val(addSymbol(position, task, text))
-//   position = $(this).getCursorPosition()
-//   text = getVal()
-// }
-// $('#area').keydown(function (e) {
-//   switch (e.which) {
-//     case 190:
-//       $(this).val(addSymbol(position, task, text))
-//       break
-//     case 188:
-//       $(this).val(addSymbol(position, event, text))
-//       break
-//     case 191:
-//       $(this).val(addSymbol(position, note, text))
-//       break
-//   }
-// })
-// Constructor for new tasks, events, and notes.

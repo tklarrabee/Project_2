@@ -29,13 +29,13 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.STRING,
             allowNull: false
         },
-        
-        // password2: {
-        //     type: Sequelize.STRING,
-        //     allowNull: false
-        // }
- 
     });
+
+    User.associate = function(models) {
+        User.hasMany(models.Tasks, {
+            onDelete: "cascade"
+        });
+    };
  
     return User;
  

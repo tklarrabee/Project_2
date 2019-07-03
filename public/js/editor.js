@@ -71,7 +71,7 @@ $(document).ready(function () {
   // Submit event listener.
   $('#add').on('click', function (e) {
     let log = getTask()
-    let entries = []
+    let loggies = []
     // get information
     let rawLog = log.split(/([○▷●])/g)
     console.log(rawLog)
@@ -81,34 +81,34 @@ $(document).ready(function () {
         body = rawLog[bodyIndex].trim()
         if (body !== '' && body !== task && body !== note && body !== event) {
           let entry = new Element(body, 'task')
-          entries.push(entry)
+          loggies.push(entry)
         }
       } else if (rawLog[i] === event) {
         bodyIndex = i + 1
         body = rawLog[bodyIndex].trim()
         if (body !== '' && body !== task && body !== note && body !== event) {
           let entry = new Element(body, 'event')
-          entries.push(entry)
+          loggies.push(entry)
         }
       } else if (rawLog[i] === note) {
         bodyIndex = i + 1
         body = rawLog[bodyIndex].trim()
         if (body !== '' && body !== task && body !== note && body !== event) {
           let entry = new Element(body, 'note')
-          entries.push(entry)
+          loggies.push(entry)
         }
       }
     }
-    entries =  [{"type": "task", "body": "work"}]
-    console.log(entries)
+    loggies =  [{"type": "task", "body": "work"}]
+    console.log(loggies)
     $.ajax({
       url: "/api/tasks",
       type: "POST",
-      data: entries
-    }).then(function () {
+      data: loggies
+    }).then(function (req, res) {
       // location.reload();
       // console.log()
-      console.log(entries);
+      console.log(req, res);
     });
   })
 })

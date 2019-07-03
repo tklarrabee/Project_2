@@ -10,10 +10,11 @@ module.exports = function(app) {
 
   // Create a new Task
   app.post("/api/tasks", function(req, res) {
+    console.log(req.body)
     entries =  [{"type": "task", "body": "work"}]
     // console.log(req)
     // db.Tasks.bulkCreate( req.body, {returning: true}).then(function(tasks) {
-      db.Tasks.bulkCreate( entries, {returning: true}).then(function(tasks) {
+      db.Tasks.bulkCreate( entries, {returning: false}).then(function(tasks) {
       
       res.json(tasks);
   }).catch(function(err) {

@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Tasks = sequelize.define("Tasks", {
     type: DataTypes.STRING,
     body: {
@@ -10,8 +10,17 @@ module.exports = function(sequelize, DataTypes) {
     urgent: {
       type: DataTypes.BOOLEAN,
       default: false
-    },
-    user: DataTypes.STRING
+    }
   });
+  Tasks.associate = function (models) {
+    Tasks.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  }
+
+
   return Tasks;
+
 };

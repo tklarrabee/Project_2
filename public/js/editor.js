@@ -124,4 +124,8 @@ $('#log').on('click', function (e) {
     }
   }
   console.log(entries)
+  $.post("/api/tasks", entries).then(function (res) {
+    location.reload();
+    console.log(res);
+  });
 })

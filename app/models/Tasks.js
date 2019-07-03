@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
   Tasks.associate = function (models) {
-    Tasks.belongsTo(models.User, {
+    Tasks.belongsTo(models.user, {
       foreignKey: {
         allowNull: false
       }

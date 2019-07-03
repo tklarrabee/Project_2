@@ -7,7 +7,7 @@ body {
 }
 
 .section {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .tabs .indicator{
@@ -20,6 +20,14 @@ body {
 
 .materialize-textarea {
   color: white;
+}
+
+#message {
+  height: 250px;
+  margin-top: 50px;
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px solid #2979ff;
 }
 
 textarea.materialize-textarea:focus:not([readonly]) {
@@ -38,13 +46,6 @@ textarea.materialize-textarea+label {
 
 .list-group-item {
   line-height: 2.5;
-}
-
-#message {
-  height: 250px;
-  margin-top: 100px;
-  margin-left: 20px;
-  padding: 10px;
 }
 
 #add {

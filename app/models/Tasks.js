@@ -12,13 +12,13 @@ module.exports = function (sequelize, DataTypes) {
       default: false
     }
   });
-  Tasks.associate = function (models) {
-    Tasks.belongsTo(models.user, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  }
+  // Tasks.associate = function (models) {
+  //   Tasks.belongsTo(models.user, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // }
 
 
   return Tasks;

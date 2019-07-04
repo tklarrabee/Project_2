@@ -71,7 +71,7 @@ $(document).ready(function () {
   // Submit event listener.
   $('#add').on('click', function (e) {
     let log = getTask()
-    let loggies = []
+    let entries = []
     // get information
     let rawLog = log.split(/([○▷●])/g)
     console.log(rawLog)
@@ -81,21 +81,21 @@ $(document).ready(function () {
         body = rawLog[bodyIndex].trim()
         if (body !== '' && body !== task && body !== note && body !== event) {
           let entry = new Element(body, 'task')
-          loggies.push(entry)
+          entries.push(entry)
         }
       } else if (rawLog[i] === event) {
         bodyIndex = i + 1
         body = rawLog[bodyIndex].trim()
         if (body !== '' && body !== task && body !== note && body !== event) {
           let entry = new Element(body, 'event')
-          loggies.push(entry)
+          entries.push(entry)
         }
       } else if (rawLog[i] === note) {
         bodyIndex = i + 1
         body = rawLog[bodyIndex].trim()
         if (body !== '' && body !== task && body !== note && body !== event) {
           let entry = new Element(body, 'note')
-          loggies.push(entry)
+          entries.push(entry)
         }
       }
     }

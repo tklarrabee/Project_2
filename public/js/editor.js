@@ -100,10 +100,11 @@ $(document).ready(function () {
       }
     }
     loggies =  [{"type": "task", "body": "work"}]
+
     console.log(loggies)
     $.ajax({
+      method: "POST",
       url: "/api/tasks",
-      type: "POST",
       data: loggies
     }).then(function (req, res) {
       // location.reload();

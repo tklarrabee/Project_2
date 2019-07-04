@@ -4,16 +4,17 @@ $(document).ready(function () {
   const task = '●'
   const event = '○'
   const note = '▷'
+  const userId = $('#janky').attr("data-user")
 
   // document.write(task, event, note)
 
   // Constructor that will have different argument.
-  function Element(body, type) {
+  function Element(body, type, user) {
     this.body = body
     this.type = type
     // this.date = date
     // this.urgent = urgent
-    // this.user = user
+    this.userId = user
   }
 
   // Used to determine the cursor position within the editor message.
@@ -80,21 +81,21 @@ $(document).ready(function () {
         bodyIndex = i + 1
         body = rawLog[bodyIndex].trim()
         if (body !== '' && body !== task && body !== note && body !== event) {
-          let entry = new Element(body, 'task')
+          let entry = new Element(body, 'task', userId)
           entries.push(entry)
         }
       } else if (rawLog[i] === event) {
         bodyIndex = i + 1
         body = rawLog[bodyIndex].trim()
         if (body !== '' && body !== task && body !== note && body !== event) {
-          let entry = new Element(body, 'event')
+          let entry = new Element(body, 'event', userId)
           entries.push(entry)
         }
       } else if (rawLog[i] === note) {
         bodyIndex = i + 1
         body = rawLog[bodyIndex].trim()
         if (body !== '' && body !== task && body !== note && body !== event) {
-          let entry = new Element(body, 'note')
+          let entry = new Element(body, 'note', userId)
           entries.push(entry)
         }
       }
@@ -115,4 +116,14 @@ $(document).ready(function () {
     console.log(loggies)
 
   })
+
+  // Change view to view task list or note
+  $('.clicky').on('click', function(e) {
+    url = '/api/entries/'+ userId +'/' + $(this).attr('data-type')
+    $.get(url, function (data) {
+      console.log(url,data)
+    })
+  })
 })
+
+

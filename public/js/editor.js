@@ -100,30 +100,25 @@ $(document).ready(function () {
         }
       }
     }
-    loggies =  [{"type": "task", "body": "work"}]
+    // This pushes tasks individually because bulk create is a myth invented to crush the spirit of coders
     for (i = 0; i < entries.length; i++) {
       let entry = entries[i]
       $.ajax({
         method: "POST",
         url: "/api/tasks",
         data: entry
-      }).then(function (req, res) {
-        // location.reload();
-        // console.log()
-        console.log(req, res);
-      });
+      }).then(function (req, res) { });
     }
-    console.log(loggies)
-
   })
 
   // Change view to view task list or note
-  $('.clicky').on('click', function(e) {
-    url = '/api/entries/'+ userId +'/' + $(this).attr('data-type')
+  $('.clicky').on('click', function (e) {
+    url = '/api/entries/' + userId + '/' + $(this).attr('data-type')
     $.get(url, function (data) {
-      console.log(url,data)
+      console.log(url, data)
     })
   })
+
+  // Update entries 
+
 })
-
-

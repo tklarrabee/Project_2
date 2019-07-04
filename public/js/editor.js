@@ -100,16 +100,19 @@ $(document).ready(function () {
       }
     }
     loggies =  [{"type": "task", "body": "work"}]
-
+    for (i = 0; i < entries.length; i++) {
+      let entry = entries[i]
+      $.ajax({
+        method: "POST",
+        url: "/api/tasks",
+        data: entry
+      }).then(function (req, res) {
+        // location.reload();
+        // console.log()
+        console.log(req, res);
+      });
+    }
     console.log(loggies)
-    $.ajax({
-      method: "POST",
-      url: "/api/tasks",
-      data: loggies
-    }).then(function (req, res) {
-      // location.reload();
-      // console.log()
-      console.log(req, res);
-    });
+
   })
 })

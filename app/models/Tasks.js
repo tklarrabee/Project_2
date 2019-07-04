@@ -1,5 +1,10 @@
 module.exports = function (sequelize, DataTypes) {
   var Tasks = sequelize.define("Tasks", {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+  },
     type: DataTypes.STRING,
     body: {
       type: DataTypes.TEXT,
@@ -13,9 +18,9 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
   Tasks.associate = function (models) {
-    Tasks.belongsTo(models.User, {
+    Tasks.belongsTo(models.user, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   }

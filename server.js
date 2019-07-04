@@ -3,20 +3,20 @@ var app = express()
 const expressLayouts = require('express-ejs-layouts') // dont need if handlbars work
 var passport = require('passport')
 var session = require('express-session')
-var bodyParser = require('body-parser')
+// var bodyParser = require('body-parser')
 var env = require('dotenv').config()
 var exphbs = require('express-handlebars')
 
 // var db = require('./models') *** PROBABLY DELETE ALSO
 
 // For BodyParser
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
 app.use(express.static('public'))
 
 // Middleware ** USING BODY PARSER...might delete this
-// app.use(express.urlencoded({ extended: false }))
-// app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 // app.use(express.static('public'))
 
 // For Passport
@@ -54,9 +54,11 @@ var authRoute = require('./app/routes/auth.js')(app, passport)
 
 // load passport strategies
 require('./app/config/passport/passport.js')(passport, models.user)
+require("./app/routes/apiRoutes")(app);
+
 
 // Sync Database
-models.sequelize.sync().then(function () {
+models.sequelize.sync({force: true}).then(function () {
   console.log(`\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷\n●○▷ Database is Online! ●○▷\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷`)
 }).catch(function (err) {
   console.log(err, 'Something went wrong with the Database Update!')
@@ -67,7 +69,7 @@ app.listen(5000, function (err) {
 })
 
 // Routes                                        *** Might delete if handlebars works
-// require("./routes/apiRoutes")(app);
+
 // app.use('/', require('./routes/index'));
 // app.use('/users', require('./routes/users'));
 

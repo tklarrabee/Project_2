@@ -128,7 +128,7 @@ $(document).ready(function () {
         data: entry
       }).then(function (req, res) {});
     }
-    location.reload();
+    location.reload()
   })
 
   // Change view to view task list or note

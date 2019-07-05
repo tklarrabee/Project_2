@@ -42,7 +42,7 @@ require("./app/routes/apiRoutes")(app);
 
 
 // Sync Database
-models.sequelize.sync().then(function () {
+models.sequelize.sync({force: false}).then(function () {
   console.log(`\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷\n●○▷ Database is Online! ●○▷\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷`)
 }).catch(function (err) {
   console.log(err, 'Something went wrong with the Database Update!')

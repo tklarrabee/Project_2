@@ -2,11 +2,13 @@ var db = require('../models')
 
 module.exports = function (app) {
   // Get all Tasks
-  app.get('/api/entries/:user/:type', function (req, res) {
-    db.Tasks.findAll({where: {type: req.params.type, userId: req.params.user}}).then(function (elements) {
-      res.json(elements)
-    })
-  })
+  // app.get("/api/entries/:user/:type", function(req, res) {
+  //   type = req.params.type
+
+  //   db.Tasks.findAll({where: {userId: req.params.user}}).then(function(elements) {
+  //     res.json(elements);
+  //   });
+  // });
 
   // Create a new Task
   app.post('/api/tasks', function (req, res) {

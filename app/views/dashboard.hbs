@@ -2,6 +2,7 @@
   <nav class="nav-wrapper transparent">
     <div class="container" id="janky" data-user="{{id}}">
       <img class="responsive-img brand-logo center" id="logo" src="/images/RL-circle_logo.gif"/>
+      <a href="/logout" class="right blue-text text-accent-3" id="logout">Logout</a>
     </div>
   </nav>
 </header>
@@ -67,18 +68,18 @@
 </section>
 <section class="section container">
   <div class="row">
-    <div class="col l3 s6 offset-s3">
+    <div class="col l3 m8 s8 offset-m2 offset-s2">
       <div class="card grey darken-3" id="hotkeys">
         <div class="card-content white-text">
           <span class="card-title">Hot Keys</span>
           <ul>
-            <li>Task: ctrl + , = <span class="left-align">●</span></li>
-            <li>Event: ctrl + . = <span class="left-align">○</span></li>
-            <li>Note: ctrl + / = <span class="left-align">▷</span></li>
+            <li class="hotkey">Task: "<span class="blue-text text-accent-3 bigger">ctrl</span> + <span class="blue-text text-accent-3 bigger">.</span>" = ●</li>
+            <li class="hotkey">Event: "<span class="blue-text text-accent-3 bigger">ctrl</span> + <span class="blue-text text-accent-3 bigger">,</span>" = ○</li>
+            <li class="hotkey">Note: "<span class="blue-text text-accent-3 bigger">ctrl</span> + <span class="blue-text text-accent-3 bigger">/</span>" = ▷</li>
         </div>
       </div>
     </div>
-    <div class="col s8 l6 offset-s2">
+    <div class="col s10 m10 l6 offset-m1 offset-s1">
       <form>
         <div class="input-field">
           <i class="material-icons prefix">logs</i>

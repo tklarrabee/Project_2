@@ -39,18 +39,18 @@ $('#area').keyup(function (e) {
   var position = $(this).getCursorPosition()
   var deleted = ''
   var val = $(this).val()
-  if (e.which == 8) {
-    if (position[0] == position[1]) {
-      if (position[0] == 0) { deleted = '' } else { deleted = val.substr(position[0] - 1, 1) }
+  if (e.which === 8) {
+    if (position[0] === position[1]) {
+      if (position[0] === 0) { deleted = '' } else { deleted = val.substr(position[0] - 1, 1) }
     } else {
       deleted = val.substring(position[0], position[1])
     }
-  } else if (e.which == 46) {
-    var val = $(this).val()
-    if (position[0] == position[1]) {
-      if (position[0] === val.length) { deleted = '' } else { deleted = val.substr(position[0], 1) }
+  } else if (e.which === 46) {
+    var val2 = $(this).val()
+    if (position[0] === position[1]) {
+      if (position[0] === val2.length) { deleted = '' } else { deleted = val2.substr(position[0], 1) }
     } else {
-      deleted = val.substring(position[0], position[1])
+      deleted = val2.substring(position[0], position[1])
     }
   }
   if (deleted !== '') {

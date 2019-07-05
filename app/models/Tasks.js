@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var Tasks = sequelize.define("Tasks", {
+  var Tasks = sequelize.define('Tasks', {
     type: DataTypes.STRING,
     body: {
       type: DataTypes.TEXT,
@@ -11,16 +11,13 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       default: false
     }
-  });
+  })
   Tasks.associate = function (models) {
-    Tasks.belongsTo(models.User, {
+    Tasks.belongsTo(models.user, {
       foreignKey: {
         allowNull: false
       }
-    });
+    })
   }
-
-
-  return Tasks;
-
-};
+  return Tasks
+}

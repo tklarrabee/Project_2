@@ -28,7 +28,7 @@
               <ul>
                 {{#each task}}
                   {{#if task}}
-                      {{body}}
+                      {{> task-block}}
                   {{/if}}
                 {{/each}}
               </ul>
@@ -42,7 +42,7 @@
               <ul>
                 {{#each task}}
                   {{#if event}}
-                      {{body}}
+                      {{> task-block}}
                   {{/if}}
                 {{/each}}
               </ul>
@@ -56,7 +56,7 @@
               <ul>
                 {{#each task}}
                   {{#if note}}
-                      {{body}}
+                      {{> task-block}}
                   {{/if}}
                 {{/each}}
               </ul>

@@ -1,23 +1,14 @@
 var express = require('express')
 var app = express()
-const expressLayouts = require('express-ejs-layouts') // dont need if handlbars work
 var passport = require('passport')
 var session = require('express-session')
-// var bodyParser = require('body-parser')
 var env = require('dotenv').config()
 var exphbs = require('express-handlebars')
 
-// var db = require('./models') *** PROBABLY DELETE ALSO
-
-// For BodyParser
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
-app.use(express.static('public'))
-
-// Middleware ** USING BODY PARSER...might delete this
+// Middleware 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-// app.use(express.static('public'))
+app.use(express.static('public'))
 
 // For Passport
 app.use(session({
@@ -27,13 +18,6 @@ app.use(session({
 })) // session secret
 app.use(passport.initialize())
 app.use(passport.session()) // persistent login sessions
-
-//  EJS                DELETE IF Handlebars works
-// app.use(expressLayouts);
-// app.set('view engine', 'ejs');
-
-// //routes
-// app.use('/', require('./app/routes/index'));
 
 // For Handlebars
 app.set('views', './app/views')
@@ -58,7 +42,11 @@ require("./app/routes/apiRoutes")(app);
 
 
 // Sync Database
+<<<<<<< HEAD
 models.sequelize.sync({force: false}).then(function () {
+=======
+models.sequelize.sync().then(function () {
+>>>>>>> a3896bec7d573cdd5a9eb9168ba9d6b88f2c5c21
   console.log(`\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷\n●○▷ Database is Online! ●○▷\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷`)
 }).catch(function (err) {
   console.log(err, 'Something went wrong with the Database Update!')
@@ -68,18 +56,3 @@ app.listen(5000, function (err) {
   if (!err) { console.log(`\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷\n●○▷  Rapid Logger is Online!  ●○▷\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷`) } else console.log(err)
 })
 
-// Routes                                        *** Might delete if handlebars works
-
-// app.use('/', require('./routes/index'));
-// app.use('/users', require('./routes/users'));
-
-// var syncOptions = { force: false }                        // DO WE NEED THIS???
-
-// If running a test, set syncOptions.force to true       OR THIS??
-// clearing the `testdb`   "comment"
-
-// if (process.env.NODE_ENV === 'test') {
-//   syncOptions.force = true
-// }
-
-// module.exports = app   // DONT THINK WE NEED THIS?

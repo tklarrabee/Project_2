@@ -1,10 +1,10 @@
 $(document).ready(function () {
-  $(".tabs").tabs()
+  $('.tabs').tabs()
   /* eslint-disable no-undef */
   const task = '●'
   const event = '○'
   const note = '▷'
-  const userId = $('#janky').attr("data-user")
+  const userId = $('#janky').attr('data-user')
 
   // document.write(task, event, note)
 
@@ -45,13 +45,13 @@ $(document).ready(function () {
   }
 
   // Get current text editor value
-  function getTask() {
+  function getTask () {
     let editorState = $('#message').val()
     return editorState
   }
 
   // add Symbol, split editor value at cursor position and insert the symbol provided as an argument
-  function addSymbol(pos, sym, text) {
+  function addSymbol (pos, sym, text) {
     let end = text.length
     let halfOne = text.substring(0, pos[0])
     let halfTwo = text.substring(pos[1], end)
@@ -123,8 +123,8 @@ $(document).ready(function () {
     for (i = 0; i < entries.length; i++) {
       let entry = entries[i]
       $.ajax({
-        method: "POST",
-        url: "/api/tasks",
+        method: 'POST',
+        url: '/api/tasks',
         data: entry
       }).then(function (req, res) {});
     }

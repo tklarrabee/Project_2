@@ -3,7 +3,7 @@ var db = require('../models')
 module.exports = function (app) {
   // Get all Tasks
   app.get('/api/entries/:user/:type', function (req, res) {
-    db.Tasks.findAll({where: {type: req.params.type, userId: req.params.user}}).then(function (elements) {
+    db.Tasks.findAll({ where: { type: req.params.type, userId: req.params.user } }).then(function (elements) {
       res.json(elements)
     })
   })

@@ -107,7 +107,7 @@ $(document).ready(function () {
         method: 'POST',
         url: '/api/tasks',
         data: entry
-      }).then(function (req, res) { });
+      }).then(function (req, res) { })
     }
   })
 
@@ -120,5 +120,4 @@ $(document).ready(function () {
   })
 
   // Update entries 
-
 })

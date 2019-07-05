@@ -59,6 +59,10 @@ textarea.materialize-textarea+label {
   max-width: 250px;
 }
 
+.bigger {
+  font-size: 20px;
+}
+
 /************************************** Login Page Style***************************************/
 .login {
   text-shadow: 1px 2px 2px #607d8b;
@@ -129,6 +133,10 @@ input[type=password]:not(.browser-default):focus:not([readonly]) {
 input[type=text]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #448aff;
   box-shadow: 0 1px 0 0 #000;
+}
+
+.section-login {
+  margin-top: 200px;
 }
 
 /*************************Welcome Page Style*****************************/

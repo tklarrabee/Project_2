@@ -152,6 +152,18 @@ $(document).ready(function () {
 
 })
 
+$('.delete-task').on('click', function () {
+  let id = $(this).attr('data-id')
+  let url = '/api/tasks/' + id
+  $.ajax({
+    method: 'DELETE',
+    url: url,
+    data: {id: id}
+  }).then(function () {
+    location.reload();
+  })
+})
+
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.fixed-action-btn');
   var instances = M.FloatingActionButton.init(elems, {

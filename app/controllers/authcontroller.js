@@ -1,3 +1,4 @@
+var db = require('../models')
 var exports = module.exports = {}
 
 exports.register = function (req, res) {
@@ -9,8 +10,15 @@ exports.login = function (req, res) {
 }
 
 exports.dashboard = function (req, res) {
-  let userId = {id: req.user.id}
-  res.render('dashboard', userId)
+  
+  
+  db.Tasks.findAll({where: {userId: req.user.id}}).then(function (task) {
+    let handleObject = {
+      id: req.user.id,
+      task: task
+    }
+    res.render('dashboard', handleObject)
+})
 }
 
 exports.logout = function (req, res) {

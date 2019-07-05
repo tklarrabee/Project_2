@@ -20,7 +20,7 @@ module.exports = function (sequelize, DataTypes) {
   Tasks.associate = function (models) {
     Tasks.belongsTo(models.user, {
       foreignKey: {
-        allowNull: true
+        allowNull: false
       }
     });
   }

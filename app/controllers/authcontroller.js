@@ -9,7 +9,8 @@ exports.login = function (req, res) {
 }
 
 exports.dashboard = function (req, res) {
-  res.render('dashboard')
+  let userId = {id: req.user.id}
+  res.render('dashboard', userId)
 }
 
 exports.logout = function (req, res) {

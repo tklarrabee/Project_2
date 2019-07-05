@@ -1,0 +1,16 @@
+<li style="padding-bottom: 12px;">
+    {{body}}
+    {{!-- <button class="urgent" data-id="{{id}}" data-urgent="{{urgent}}">
+        {{#unless urgent}}Urgent!{{/unless}}
+    </button> --}}
+    <form style="display: inline-block; padding-left:15px;" action="#">
+    <p>
+      <label>
+        <input class="blue accent-3" type="checkbox" data-id="{{id}}" data-urgent="{{urgent}}" id="urgent"/>
+        <span class="red-text text-darken-1" title="Urgent!">!!!</span>
+      </label>
+    </p>
+    </form>
+    <a class="waves-effect waves-light btn-small red right" style="margin-left: 5px;" id="delete-task" title="Delete" data-id="{{this.id}}"><i class="material-icons">delete</i></a>
+    <a class="waves-effect waves-light btn-small blue accent-3 right" id="update-task" title="Update" data-id="{{this.id}}"><i class="material-icons">check_circle_outline</i></a>
+</li>

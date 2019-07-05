@@ -6,25 +6,14 @@ $(document).ready(function () {
   const note = '▷'
   const userId = $('#janky').attr('data-user')
 
-  // document.write(task, event, note)
-
-  // Constructor that will have different argument.
+  // Construct the note, task, or event 
   function Element(body, user) {
     this.body = body
     this.userId = user
-        // this.type = type
-    // this.date = date
-    // this.urgent = urgent
   }
 
-  // function Element(entry, date) {
-  //   this.body = entry.body
-  //   this.type = entry.type
-  //   this.userId = entry.userId
-  //   this.date = date
-  // }
-
   // Used to determine the cursor position within the editor message.
+
   $.fn.getCursorPosition = function () {
     var el = $(this).get(0)
     var pos = 0
@@ -126,11 +115,12 @@ $(document).ready(function () {
         method: 'POST',
         url: '/api/tasks',
         data: entry
-      }).then(function (req, res) {});
+      }).then(function (req, res) {
+        location.reload()
+      });
     }
-    location.reload()
   })
-
+  // Handlebars is really dumb we had to change our model
   // Change view to view task list or note
   // $('.clicky').on('click', function (e) {
   //   url = '/api/entries/' + userId + '/' + $(this).attr('data-type')
@@ -141,12 +131,24 @@ $(document).ready(function () {
 
   // Update entries 
 
-  function updateEntry(entryId) {
-    url = '/api/tasks/' + entryId
+  function updateEntry(entry) {
+    url = '/api/tasks/' + entry.id
     $.put(url, function (data) {
       console.log(url, data)
+    }).then(function() {
+      location.reload()
     })
   }
+
+  $("#urgent").on('click', function () {
+    let urgent = this.attr("data-urgent")
+    let id = this.attr("data-id")
+    let update = {
+      id: id,
+      urgent: urgent
+    }
+    updateEntry(update)
+  });
 
 })
 

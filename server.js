@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 var express = require('express')
 var app = express()
 var passport = require('passport')
@@ -5,12 +6,12 @@ var session = require('express-session')
 var env = require('dotenv').config()
 var exphbs = require('express-handlebars')
 
-// Middleware 
+// Middleware
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(express.static('public'))
 
-// For Passport
+// For Passport.js
 app.use(session({
   secret: 'keyboard cat',
   resave: true,
@@ -38,11 +39,10 @@ var authRoute = require('./app/routes/auth.js')(app, passport)
 
 // load passport strategies
 require('./app/config/passport/passport.js')(passport, models.user)
-require("./app/routes/apiRoutes")(app);
-
+require('./app/routes/apiRoutes')(app)
 
 // Sync Database
-models.sequelize.sync({force: false}).then(function () {
+models.sequelize.sync({ force: false }).then(function () {
   console.log(`\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷\n●○▷ Database is Online! ●○▷\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷`)
 }).catch(function (err) {
   console.log(err, 'Something went wrong with the Database Update!')
@@ -51,4 +51,3 @@ models.sequelize.sync({force: false}).then(function () {
 app.listen(5000, function (err) {
   if (!err) { console.log(`\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷\n●○▷  Rapid Logger is Online!  ●○▷\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷`) } else console.log(err)
 })
-

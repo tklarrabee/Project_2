@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 $(document).ready(function () {
 
   const tasks = $('input[type=checkbox]')
 
   for (i = 0; tasks.length < i; i++) {
-    if(tasks[i].attr('data-urgent')) {
+    if (tasks[i].attr('data-urgent')) {
       tasks[i].attr('checked', 'checked')
     }
   }
@@ -15,8 +17,8 @@ $(document).ready(function () {
   const note = '▷'
   const userId = $('#janky').attr('data-user')
 
-  // Construct the note, task, or event 
-  function Element(body, user) {
+  // Construct the note, task, or event
+  function Element (body, user) {
     this.body = body
     this.userId = user
     this.urgent = false
@@ -110,14 +112,6 @@ $(document).ready(function () {
       }
     }
 
-    // for(i = 0; i< entries.length; i++) {
-    //   let rawBody = entries[i].body.split('||')
-    //   if(rawBody[i] === '||') {
-    //     dateIndex = i + 1
-    //     date = date(rawBody[dateIndex])
-    //   }
-    // }
-
     // This pushes tasks individually because bulk create is a myth invented to crush the spirit of coders
     for (i = 0; i < entries.length; i++) {
       let entry = entries[i]
@@ -127,32 +121,24 @@ $(document).ready(function () {
         data: entry
       }).then(function (req, res) {
         location.reload()
-      });
+      })
     }
   })
-  // Handlebars is really dumb we had to change our model
-  // Change view to view task list or note
-  // $('.clicky').on('click', function (e) {
-  //   url = '/api/entries/' + userId + '/' + $(this).attr('data-type')
-  //   $.get(url, function (data) {
-  //     console.log(url, data)
-  //   })
-  // })
 
-  // Update entries 
+  // Update entries
 
-  $(".blue").on('click', function (e) {
-      
-      let urgent = $("#"+e.currentTarget.id).attr('data-urgent')
-      console.log(urgent, e)
-    if(urgent === true) {
+  $('.blue').on('click', function (e) {
+    let urgent = $('#' + e.currentTarget.id).attr('data-urgent')
+    console.log(urgent, e)
+    if (urgent === true) {
       urgent = false
     } else {
       urgent = true
     }
-    
+
     let id = e.currentTarget.dataset.id
-    console.log("POST UPDATE " + urgent, id)
+    console.log('POST UPDATE ' + urgent, id)
+
     let update = {
       urgent: urgent
     }
@@ -160,23 +146,20 @@ $(document).ready(function () {
       method: 'PUT',
       data: update
     }).then(function () {
-      // console.log(update)
-      // location.reload()
     })
-  });
-
+  })
 })
 
-function editTask() {
-  body =  $(this).data('body')
-  $(this).children().hide();
-  $(this).children("input.edit").val(body);
-  $(this).children("input.edit").show();
-  $(this).children("input.edit").focus();
+function editTask () {
+  body = $(this).data('body')
+  $(this).children().hide()
+  $(this).children('input.edit').val(body)
+  $(this).children('input.edit').show()
+  $(this).children('input.edit').focus()
   console.log(body)
 }
 
-function updateEntry(entry) {
+function updateEntry (entry) {
   url = '/api/body/' + entry.id
   console.log(url)
   $.ajax(url, {
@@ -187,37 +170,36 @@ function updateEntry(entry) {
   })
 }
 
-function cancelEdit() {
-  var currentTodo = $(this).data("body");
+function cancelEdit () {
+  var currentTodo = $(this).data('body')
   console.log(currentTodo)
   if (currentTodo) {
-    $(this).children().hide();
-    $(this).children("input.edit").val(currentTodo.text);
+    $(this).children().hide()
+    $(this).children('input.edit').val(currentTodo.text)
 
     $(this).children('label').show()
-    $(this).children("span").show();
-    $(this).children("button").show();
-    $(this).children('a').show();
-    $(this).children('p').show();
-    $(this).children("input.blue").show()
+    $(this).children('span').show()
+    $(this).children('button').show()
+    $(this).children('a').show()
+    $(this).children('p').show()
+    $(this).children('input.blue').show()
     $(this).children('span.red-text').show()
   }
 }
 
-function finishEdit(event) {
-  var id = $(this).data("id")
-  // var updatedTodo = $(this).data("body");
+function finishEdit (event) {
+  var id = $(this).data('id')
   if (event.which === 13) {
-    let newBody = $(this).children("input").val().trim();
-    $(this).blur();
-    updateEntry({id: id, body: newBody });
+    let newBody = $(this).children('input').val().trim()
+    $(this).blur()
+    updateEntry({ id: id, body: newBody })
     location.reload()
   }
 }
 
 $(document).on('click', '.element', editTask)
-$(document).on("blur", ".element", cancelEdit);
-$(document).on("keyup", ".element", finishEdit);
+$(document).on('blur', '.element', cancelEdit)
+$(document).on('keyup', '.element', finishEdit)
 
 $('.delete-task').on('click', function () {
   let id = $(this).attr('data-id')
@@ -225,16 +207,8 @@ $('.delete-task').on('click', function () {
   $.ajax({
     method: 'DELETE',
     url: url,
-    data: {id: id}
+    data: { id: id }
   }).then(function () {
-    location.reload();
+    location.reload()
   })
 })
-
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.fixed-action-btn');
-  var instances = M.FloatingActionButton.init(elems, {
-    direction: 'left',
-    hoverEnabled: false
-  });
-});

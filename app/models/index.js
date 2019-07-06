@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use strict'
 
 const fs = require('fs')
@@ -7,6 +8,7 @@ const taskModel = require('../models/user')
 const userModel = require('../models/Tasks')
 const basename = path.basename(__filename)
 const env = process.env.NODE_ENV || 'development'
+// eslint-disable-next-line no-path-concat
 const config = require(__dirname + '/../config/config.json')[env]
 const db = {}
 

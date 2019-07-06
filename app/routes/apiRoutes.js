@@ -30,6 +30,7 @@ module.exports = function (app) {
     })
   })
 
+
   app.put('/api/body/:id', function (req, res) {
     db.Tasks.update({ body: req.body.body }, { where: { id: req.params.id } })
   })

@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 $(document).ready(function () {
+
   const tasks = $('input[type=checkbox]')
 
   for (i = 0; tasks.length < i; i++) {
@@ -137,6 +138,7 @@ $(document).ready(function () {
 
     let id = e.currentTarget.dataset.id
     console.log('POST UPDATE ' + urgent, id)
+
     let update = {
       urgent: urgent
     }

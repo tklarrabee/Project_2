@@ -1,12 +1,10 @@
-<li style="padding-bottom: 12px;" class="element" data-body="{{body}}" data-id="{{id}}">
-    <span id="text" > {{body}} </span>
+<li style='padding-bottom: 12px;' class='element' data-body='{{ body }}' data-id='{{ id }}'>
+    <span id='text' > {{ body }} </span>
     <input type='text' class='edit' style='display: none;'>
-    {{!-- <button class="urgent" data-id="{{id}}" data-urgent="{{urgent}}">
-        {{#unless urgent}}Urgent!{{/unless}}
-    </button> --}}
-    <form style="display: inline-block; padding-left:15px;" action="#">
+    <form style='display: inline-block; padding-left:15px;' action='#'>
     <p>
       <label>
+<<<<<<< HEAD
         <input class="blue accent-3 urgent-box" type="checkbox" id="element{{id}}" data-id="{{id}}" data-urgent="{{this.urgent}}" class="urgent"/>
         <span class="red-text text-darken-1" title="Urgent!">!!!</span>
       </label>
@@ -14,4 +12,13 @@
     </form>
     <button class="waves-effect waves-light btn-small red right delete-task" style="margin-left: 5px;" title="Delete" data-id="{{this.id}}"><i class="material-icons">delete</i></a>
     <button class="waves-effect waves-light btn-small blue accent-3 right check-done" id="update-task" title="Complete" data-id="{{this.id}}" data-completed ="{{complete}}"><i class="material-icons">check_circle_outline</i></a>
+=======
+        <input class='blue accent-3' type='checkbox' id='element{{id}}' data-id='{{ id }}' data-urgent='{{ this.urgent }}' class='urgent'/>
+        <span class='red-text text-darken-1' title='Urgent!'>!!!</span>
+      </label>
+    </p>
+    </form>
+    <a class='waves-effect waves-light btn-small red right delete-task' style='margin-left: 5px;' title='Delete' data-id='{{ this.id }}'><i class='material-icons'>delete</i></a>
+    <a class='waves-effect waves-light btn-small blue accent-3 right' id='update-task' title='Update' data-id='{{ this.id }}'><i class='material-icons'>check_circle_outline</i></a>
+>>>>>>> 3d452962203faedf7c9d32d908810b3ec0bef688
 </li>

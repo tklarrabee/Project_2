@@ -29,8 +29,8 @@ module.exports = function (app) {
 
   // Delete a Task by id
   app.delete('/api/tasks/:id', function (req, res) {
-    db.Tasks.destroy({ where: { userId: req.params.id } }).then(function (dbExample) {
-      res.json(dbExample)
+    db.Tasks.destroy({ where: { userId: req.params.id } }).then(function (tasks) {
+      res.json(tasks)
     })
   })
 }

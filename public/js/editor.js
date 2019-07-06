@@ -1,13 +1,18 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 $(document).ready(function () {
   $('.tabs').tabs()
+  $(document).on('click', '.todo-item', editTasks)
+  $(document).on('keyup', '.todo-item', finishEdit)
+  $(document).on('blur', '.todo-item', cancelEdit)
   /* eslint-disable no-undef */
   const task = '●'
   const event = '○'
   const note = '▷'
   const userId = $('#janky').attr('data-user')
 
-  // Construct the note, task, or event 
-  function Element(body, user) {
+  // Construct the note, task, or event
+  function Element (body, user) {
     this.body = body
     this.userId = user
   }
@@ -117,7 +122,7 @@ $(document).ready(function () {
         data: entry
       }).then(function (req, res) {
         location.reload()
-      });
+      })
     }
   })
   // Handlebars is really dumb we had to change our model
@@ -129,33 +134,66 @@ $(document).ready(function () {
   //   })
   // })
 
-  // Update entries 
+  // Update entries
 
-  function updateEntry(entry) {
+  function updateEntry (entry) {
     url = '/api/tasks/' + entry.id
     $.put(url, function (data) {
       console.log(url, data)
-    }).then(function() {
+    }).then(function () {
       location.reload()
     })
   }
 
-  $("#urgent").on('click', function () {
-    let urgent = this.attr("data-urgent")
-    let id = this.attr("data-id")
+  $('#urgent').on('click', function () {
+    let urgent = this.attr('data-urgent')
+    let id = this.attr('data-id')
     let update = {
       id: id,
       urgent: urgent
     }
     updateEntry(update)
-  });
-
+  })
 })
 
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.fixed-action-btn');
-  var instances = M.FloatingActionButton.init(elems, {
-    direction: 'left',
-    hoverEnabled: false
-  });
-});
+function editTasks () {
+  var currentTask = $(this).data('task')
+  $(this).children().hide()
+  $(this).children('input.edit').val(currentTask.text)
+  $(this).children('input.edit').show()
+  $(this).children('input.edit').focus()
+}
+
+function finishEdit (event) {
+  var updatedTasks = $(this).data('tasks')
+  if (event.which === 13) {
+    updatedTasks.body = $(this).children('input').val().trim()
+    $(this).blur()
+    updateTodo(updatedTasks)
+  }
+}
+
+function cancelEdit () {
+  var currentTask = $(this).data('todo')
+  if (currentTask) {
+    $(this).children().hide()
+    $(this).children('input.edit').val(currentTask.text)
+    $(this).children('span').show()
+    $(this).children('button').show()
+  }
+}
+
+function getTasks () {
+  $.get('/api/todos', function (data) {
+    tasks = data
+    initializeRows()
+  })
+}
+
+function updateTodo (tasks) {
+  $.ajax({
+    method: 'PUT',
+    url: '/api/tasks',
+    data: tasks
+  }).then(getTasks)
+}

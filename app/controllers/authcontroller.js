@@ -10,15 +10,13 @@ exports.login = function (req, res) {
 }
 
 exports.dashboard = function (req, res) {
-  
-  
-  db.Tasks.findAll({where: {userId: req.user.id}}).then(function (task) {
+  db.Tasks.findAll({ where: { userId: req.user.id } }).then(function (task) {
     let handleObject = {
       id: req.user.id,
       task: task
     }
     res.render('dashboard', handleObject)
-})
+  })
 }
 
 exports.logout = function (req, res) {

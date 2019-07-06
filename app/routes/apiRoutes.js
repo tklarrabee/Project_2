@@ -1,15 +1,6 @@
 var db = require('../models')
 
 module.exports = function (app) {
-  // Get all Tasks
-  // app.get("/api/entries/:user/:type", function(req, res) {
-  //   type = req.params.type
-
-  //   db.Tasks.findAll({where: {userId: req.params.user}}).then(function(elements) {
-  //     res.json(elements);
-  //   });
-  // });
-
   // Create a new Task
   app.post('/api/tasks', function (req, res) {
     console.log('request', req.body)
@@ -30,17 +21,16 @@ module.exports = function (app) {
     })
   })
 
-
   app.put('/api/body/:id', function (req, res) {
     db.Tasks.update({ body: req.body.body }, { where: { id: req.params.id } })
   })
 
   app.put('/api/complete/:id', function (req, res) {
     console.log(req.body.complete)
-    db.Tasks.update({complete: req.body.complete}, {where: {id: req.params.id}}).then(function (completed) {
+    db.Tasks.update({ complete: req.body.complete }, { where: { id: req.params.id } }).then(function (completed) {
       res.json(completed)
     })
-  }) 
+  })
 
   // Delete a Task by id
   app.delete('/api/tasks/:id', function (req, res) {

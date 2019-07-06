@@ -1,4 +1,13 @@
 $(document).ready(function () {
+
+  const tasks = $('input[type=checkbox]')
+
+  for (i = 0; tasks.length < i; i++) {
+    if(tasks[i].attr('data-urgent')) {
+      tasks[i].attr('checked', 'checked')
+    }
+  }
+
   $('.tabs').tabs()
   /* eslint-disable no-undef */
   const task = '●'
@@ -10,6 +19,7 @@ $(document).ready(function () {
   function Element(body, user) {
     this.body = body
     this.userId = user
+    this.urgent = false
   }
 
   // Used to determine the cursor position within the editor message.
@@ -131,25 +141,94 @@ $(document).ready(function () {
 
   // Update entries 
 
-  function updateEntry(entry) {
-    url = '/api/tasks/' + entry.id
-    $.put(url, function (data) {
-      console.log(url, data)
-    }).then(function() {
-      location.reload()
-    })
-  }
-
-  $("#urgent").on('click', function () {
-    let urgent = this.attr("data-urgent")
-    let id = this.attr("data-id")
+  $(".blue").on('click', function (e) {
+      
+      let urgent = $("#"+e.currentTarget.id).attr('data-urgent')
+      console.log(urgent, e)
+    if(urgent === true) {
+      urgent = false
+    } else {
+      urgent = true
+    }
+    
+    let id = e.currentTarget.dataset.id
+    console.log("POST UPDATE " + urgent, id)
     let update = {
-      id: id,
       urgent: urgent
     }
-    updateEntry(update)
+    $.ajax('/api/tasks/' + id, {
+      method: 'PUT',
+      data: update
+    }).then(function () {
+      // console.log(update)
+      // location.reload()
+    })
   });
 
+})
+
+function editTask() {
+  body =  $(this).data('body')
+  $(this).children().hide();
+  $(this).children("input.edit").val(body);
+  $(this).children("input.edit").show();
+  $(this).children("input.edit").focus();
+  console.log(body)
+}
+
+function updateEntry(entry) {
+  url = '/api/body/' + entry.id
+  console.log(url)
+  $.ajax(url, {
+    method: 'PUT',
+    data: entry
+  }).then(function () {
+    location.reload()
+  })
+}
+
+function cancelEdit() {
+  var currentTodo = $(this).data("body");
+  console.log(currentTodo)
+  if (currentTodo) {
+    $(this).children().hide();
+    $(this).children("input.edit").val(currentTodo.text);
+
+    $(this).children('label').show()
+    $(this).children("span").show();
+    $(this).children("button").show();
+    $(this).children('a').show();
+    $(this).children('p').show();
+    $(this).children("input.blue").show()
+    $(this).children('span.red-text').show()
+  }
+}
+
+function finishEdit(event) {
+  var id = $(this).data("id")
+  // var updatedTodo = $(this).data("body");
+  if (event.which === 13) {
+    let newBody = $(this).children("input").val().trim();
+    $(this).blur();
+    updateEntry({id: id, body: newBody });
+    location.reload()
+  }
+}
+
+$(document).on('click', '.element', editTask)
+$(document).on("blur", ".element", cancelEdit);
+$(document).on("keyup", ".element", finishEdit);
+
+$('.delete-task').on('click', function () {
+  let id = $(this).attr('data-id')
+  let url = '/api/tasks/' + id
+  $.ajax({
+    method: 'DELETE',
+    url: url,
+    data: {id: id}
+  }).then(function () {
+    location.reload();
+  })
 })
 
 document.addEventListener('DOMContentLoaded', function() {

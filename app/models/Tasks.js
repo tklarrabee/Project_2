@@ -12,25 +12,27 @@ module.exports = function (sequelize, DataTypes) {
     },
     note: {
       type: DataTypes.BOOLEAN,
-      default: false
+      default: false,
     },
     event: {
       type: DataTypes.BOOLEAN,
-      default: false
+      default: false,
     },
     task: {
       type: DataTypes.BOOLEAN,
-      default: false
+      default: false,
     },
     date: DataTypes.DATE,
     urgent: {
       type: DataTypes.BOOLEAN,
-      default: false
+      default: false,
+      allowNull: false
     }
   })
   Tasks.associate = function (models) {
     Tasks.belongsTo(models.user, {
       foreignKey: {
+        allowNull: false,
         allowNull: false
       }
     })

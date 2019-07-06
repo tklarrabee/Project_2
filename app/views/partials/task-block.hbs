@@ -1,12 +1,13 @@
-<li style="padding-bottom: 12px;">
-    {{body}}
+<li style="padding-bottom: 12px;" class="element" data-body="{{body}}" data-id="{{id}}">
+    <span id="text" > {{body}} </span>
+    <input type='text' class='edit' style='display: none;'>
     {{!-- <button class="urgent" data-id="{{id}}" data-urgent="{{urgent}}">
         {{#unless urgent}}Urgent!{{/unless}}
     </button> --}}
     <form style="display: inline-block; padding-left:15px;" action="#">
     <p>
       <label>
-        <input class="blue accent-3" type="checkbox" data-id="{{id}}" data-urgent="{{urgent}}" id="urgent"/>
+        <input class="blue accent-3" type="checkbox" id="element{{id}}" data-id="{{id}}" data-urgent="{{this.urgent}}" class="urgent"/>
         <span class="red-text text-darken-1" title="Urgent!">!!!</span>
       </label>
     </p>

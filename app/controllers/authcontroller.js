@@ -20,6 +20,7 @@ exports.dashboard = function (req, res) {
 }
 
 exports.logout = function (req, res) {
+  // eslint-disable-next-line handle-callback-err
   req.session.destroy(function (err) {
     res.redirect('/login')
   })

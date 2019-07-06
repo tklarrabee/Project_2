@@ -42,11 +42,7 @@ require('./app/config/passport/passport.js')(passport, models.user)
 require('./app/routes/apiRoutes')(app)
 
 // Sync Database
-<<<<<<< HEAD
-models.sequelize.sync({ force: true }).then(function () {
-=======
-models.sequelize.sync({force: false}).then(function () {
->>>>>>> 95e52f84ddbf2938ef0af3f20b407297ab2ed71b
+models.sequelize.sync({ force: false }).then(function () {
   console.log(`\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷\n●○▷ Database is Online! ●○▷\n●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷●○▷`)
 }).catch(function (err) {
   console.log(err, 'Something went wrong with the Database Update!')

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Get references to page elements
 var $exampleText = $('#example-text')
 var $exampleDescription = $('#example-description')
@@ -43,15 +44,16 @@ $('#area').keydown(function (e) {
   var position = $(this).getCursorPosition()
   var deleted = ''
   var val = $(this).val()
-  if (e.which == 8) {
-    if (position[0] == position[1]) {
-      if (position[0] == 0) { deleted = '' } else { deleted = val.substr(position[0] - 1, 1) }
+  if (e.which === 8) {
+    if (position[0] === position[1]) {
+      if (position[0] === 0) { deleted = '' } else { deleted = val.substr(position[0] - 1, 1) }
     } else {
       deleted = val.substring(position[0], position[1])
     }
-  } else if (e.which == 46) {
+  } else if (e.which === 46) {
+    // eslint-disable-next-line no-redeclare
     var val = $(this).val()
-    if (position[0] == position[1]) {
+    if (position[0] === position[1]) {
       if (position[0] === val.length) { deleted = '' } else { deleted = val.substr(position[0], 1) }
     } else {
       deleted = val.substring(position[0], position[1])
@@ -61,6 +63,7 @@ $('#area').keydown(function (e) {
   // Now you can test the deleted character(s) here
 })
 
+// eslint-disable-next-line no-unused-vars
 function Element (body, type, date, urgent, user) {
   this.body = body
   this.type = type

@@ -22,15 +22,22 @@ module.exports = function (app) {
 
   // Update a Task by id
   app.put('/api/tasks/:id', function (req, res) {
-    db.Tasks.update({ where: { id: req.params.id } }).then(function (dbExample) {
+    console.log("PUT " + req.body.urgent, req.params.id)
+    db.Tasks.update({urgent: req.body.urgent}, { where: { id: req.params.id } }).then(function (dbExample) {
       res.json(dbExample)
+    }).catch(function(err) {
+      console.log(err, req.body)
     })
+  })
+
+  app.put('/api/body/:id', function(req, res) {
+    db.Tasks.update({body: req.body.body}, {where: {id: req.params.id}})
   })
 
   // Delete a Task by id
   app.delete('/api/tasks/:id', function (req, res) {
-    db.Tasks.destroy({ where: { userId: req.params.id } }).then(function (tasks) {
-      res.json(tasks)
+    db.Tasks.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
+      res.json(dbExample)
     })
   })
 }

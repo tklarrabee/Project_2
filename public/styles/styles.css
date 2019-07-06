@@ -68,6 +68,10 @@ textarea.materialize-textarea+label {
   border-bottom: 2px solid red;
 }
 
+.complete {
+  text-decoration: "line-through"
+}
+
 /************************************** Login Page Style***************************************/
 .login {
   text-shadow: 1px 2px 2px #607d8b;

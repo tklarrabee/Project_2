@@ -22,6 +22,7 @@ $(document).ready(function () {
     this.body = body
     this.userId = user
     this.urgent = false
+    this.complete = false
   }
 
   // Used to determine the cursor position within the editor message.
@@ -125,12 +126,13 @@ $(document).ready(function () {
     }
   })
 
-  // Update entries
+  // Update entries 
 
-  $('.blue').on('click', function (e) {
-    let urgent = $('#' + e.currentTarget.id).attr('data-urgent')
-    console.log(urgent, e)
-    if (urgent === true) {
+  $(".urgent-box").on('click', function (e) {
+      
+      let urgent = $("#"+e.currentTarget.id).attr('data-urgent')
+      console.log(urgent, e)
+    if(urgent === true) {
       urgent = false
     } else {
       urgent = true
@@ -170,19 +172,18 @@ function updateEntry (entry) {
   })
 }
 
-function cancelEdit () {
-  var currentTodo = $(this).data('body')
-  console.log(currentTodo)
+function cancelEdit() {
+  var currentTodo = $(this).data("body");
+
   if (currentTodo) {
     $(this).children().hide()
     $(this).children('input.edit').val(currentTodo.text)
 
     $(this).children('label').show()
-    $(this).children('span').show()
-    $(this).children('button').show()
-    $(this).children('a').show()
-    $(this).children('p').show()
-    $(this).children('input.blue').show()
+    $(this).children("span").show();
+    $(this).children("button").show();
+    $(this).children('form').show();
+    $(this).children("input.blue").show()
     $(this).children('span.red-text').show()
   }
 }
@@ -197,9 +198,23 @@ function finishEdit (event) {
   }
 }
 
+function completeTask() {
+  let id = $(this).data('id')
+  let completed = $(this).data('completed')
+  let newComp
+  if (completed) {newComp = false} else {newComp = true}
+  let url = '/api/complete/' + id
+  $.ajax({
+    url: url,
+    method: 'PUT',
+    data: {complete: newComp}
+  })
+}
+
 $(document).on('click', '.element', editTask)
-$(document).on('blur', '.element', cancelEdit)
-$(document).on('keyup', '.element', finishEdit)
+$(document).on("blur", ".element", cancelEdit);
+$(document).on("keyup", ".element", finishEdit);
+$(document).on('click', '.check-done', completeTask);
 
 $('.delete-task').on('click', function () {
   let id = $(this).attr('data-id')

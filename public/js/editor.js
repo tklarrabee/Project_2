@@ -20,6 +20,7 @@ $(document).ready(function () {
     this.body = body
     this.userId = user
     this.urgent = false
+    this.complete = false
   }
 
   // Used to determine the cursor position within the editor message.
@@ -141,7 +142,7 @@ $(document).ready(function () {
 
   // Update entries 
 
-  $(".blue").on('click', function (e) {
+  $(".urgent-box").on('click', function (e) {
       
       let urgent = $("#"+e.currentTarget.id).attr('data-urgent')
       console.log(urgent, e)
@@ -189,7 +190,7 @@ function updateEntry(entry) {
 
 function cancelEdit() {
   var currentTodo = $(this).data("body");
-  console.log(currentTodo)
+  // console.log(currentTodo)
   if (currentTodo) {
     $(this).children().hide();
     $(this).children("input.edit").val(currentTodo.text);
@@ -197,8 +198,7 @@ function cancelEdit() {
     $(this).children('label').show()
     $(this).children("span").show();
     $(this).children("button").show();
-    $(this).children('a').show();
-    $(this).children('p').show();
+    $(this).children('form').show();
     $(this).children("input.blue").show()
     $(this).children('span.red-text').show()
   }
@@ -215,9 +215,23 @@ function finishEdit(event) {
   }
 }
 
+function completeTask() {
+  let id = $(this).data('id')
+  let completed = $(this).data('completed')
+  let newComp
+  if (completed) {newComp = false} else {newComp = true}
+  let url = '/api/complete/' + id
+  $.ajax({
+    url: url,
+    method: 'PUT',
+    data: {complete: newComp}
+  })
+}
+
 $(document).on('click', '.element', editTask)
 $(document).on("blur", ".element", cancelEdit);
 $(document).on("keyup", ".element", finishEdit);
+$(document).on('click', '.check-done', completeTask);
 
 $('.delete-task').on('click', function () {
   let id = $(this).attr('data-id')
@@ -230,6 +244,22 @@ $('.delete-task').on('click', function () {
     location.reload();
   })
 })
+
+// $('.check-done').on('click', function () {
+  
+//   let id = $(this).attr('data-id')
+//   let completed = $(this).attr('data-completed')
+//   console.log(id, completed)
+//   if (completed) {completed = false} else {completed = true}
+//   let url = '/api/complete/' + id
+//   $.ajax({
+//     method: 'PUT',
+//     url: url,
+//     data: {completed: completed}
+//   }).then(function (res) {
+//     console.log("CHECKED")
+//   })
+// })
 
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.fixed-action-btn');

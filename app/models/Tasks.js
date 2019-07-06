@@ -27,8 +27,15 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       default: false,
       allowNull: false
+    },
+    complete: {
+      type: DataTypes.BOOLEAN,
+      default: false,
+      allowNull: false
     }
-  })
+  },
+  
+  )
   Tasks.associate = function (models) {
     Tasks.belongsTo(models.user, {
       foreignKey: {

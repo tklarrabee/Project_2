@@ -34,6 +34,13 @@ module.exports = function (app) {
     db.Tasks.update({body: req.body.body}, {where: {id: req.params.id}})
   })
 
+  app.put('/api/complete/:id', function (req, res) {
+    console.log(req.body.complete)
+    db.Tasks.update({complete: req.body.complete}, {where: {id: req.params.id}}).then(function (completed) {
+      res.json(completed)
+    })
+  }) 
+
   // Delete a Task by id
   app.delete('/api/tasks/:id', function (req, res) {
     db.Tasks.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
